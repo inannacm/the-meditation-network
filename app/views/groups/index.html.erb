@@ -1,0 +1,19 @@
+<h1>Check out new groups!</h1>
+
+<ul><% @groups.each do |group| %>
+  <p><%= group.name %></p>
+  <p><%= group.structure %></p>
+  <p><%= group.city %></p>
+  <p><%= group.style %></p>
+   <p><%= group.user.first_name %></p>
+   <%= link_to "More info", group_path(group)  %>
+
+
+
+  <br>
+  <% end %>
+
+</ul>
+
+
+

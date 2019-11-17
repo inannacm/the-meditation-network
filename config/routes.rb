@@ -1,4 +1,13 @@
 Rails.application.routes.draw do
-  root to: 'pages#home'
+
+  devise_for :users
+  root to: 'groups#index'
+  resources :users
+  resources :groups do
+    resources :sessions, only: [:new, :show, :edit, :create]
+  end
+
+  resources :reviews
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

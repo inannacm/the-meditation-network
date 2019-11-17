@@ -1,0 +1,6 @@
+
+<%= @group.name %>
+<%= @group.user.first_name %>
+<%= link_to "Edit", edit_group_path(@group), class: 'btn btn-warning'%>
+
+<%= link_to "Book a session", new_group_session_path(@group), class: 'btn btn-warning'%>
