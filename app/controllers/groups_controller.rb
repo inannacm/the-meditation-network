@@ -5,7 +5,7 @@ class GroupsController < ApplicationController
 
   def show
     @group = Group.find(params[:id])
-
+    @review = Review.new
   end
 
   def new
@@ -38,7 +38,7 @@ class GroupsController < ApplicationController
   def destroy
     @group = Group.find(params[:id])
     @group.destroy
-    redirect_to groups_path
+    redirect_to root_path
   end
 
   private
