@@ -1,3 +1,8 @@
+<%= cl_image_tag current_user.photo.key, height: 300, width: 400, crop: :fill %>
+
+
+
+
 <h1>My bookings</h1>
 
 <% @user.booking.each do |booking| %>

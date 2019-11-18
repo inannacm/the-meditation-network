@@ -9,6 +9,7 @@
       <%= f.input :link, label: "Media link to your group" %>
       <%= f.input :address, label: "The group's address" %>
       <%= f.input :city, label: "City", hint: "", placeholder: "e.g London, Cambrdige, Oxford" %>
+      <%= f.input :photo, as: :file, label: "Upload a photo of your group!"%>
       <%= f.submit class: "btn btn-primary" %>
       <% end %>
     </div>
