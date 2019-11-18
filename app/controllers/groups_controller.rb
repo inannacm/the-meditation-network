@@ -5,7 +5,7 @@ class GroupsController < ApplicationController
 
   def show
     @group = Group.find(params[:id])
-    @review = Review.new
+    # @review = Review.new
   end
 
   def new

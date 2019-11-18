@@ -1,8 +1,17 @@
 
-<%= @group.name %>
-<%= @group.user.first_name %>
+<h1> <%= @group.name %> </h1>
+<p>Group host: <%= @group.user.first_name %></p>
+
+<% @group.reviews.each do |review| %>
+<%= review.user.first_name %>
+<% end %>
+
+
+
+
+
 <%= link_to "Edit", edit_group_path(@group), class: 'btn btn-warning'%>
 
-<%= link_to "Book a session", new_group_session_path(@group), class: 'btn btn-warning'%>
+<%= link_to "Book a session", new_group_booking_path(@group), class: 'btn btn-warning'%>
 
 <%= link_to "Add a review", new_group_review_path(@group), class: 'btn btn-warning'%>

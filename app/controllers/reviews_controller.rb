@@ -14,7 +14,7 @@ class ReviewsController < ApplicationController
     @review.group = @group
     @review.user = current_user
     if @review.save
-      redirect_to root_path
+      redirect_to group_path(@group)
     else
       redirect_to new_group_review(@group)
     end

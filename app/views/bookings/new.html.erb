@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-sm-6 offset-sm-3">
       <h1 class="mb-4">Book a session</h1>
-      <%= simple_form_for [@group, @session] do |f| %>
+      <%= simple_form_for [@group, @booking] do |f| %>
       <%= f.input :date, label: "Date of your session" %>
       <%= f.submit class: "btn btn-primary" %>
       <% end %>

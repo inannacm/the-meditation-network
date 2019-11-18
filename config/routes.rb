@@ -2,13 +2,14 @@ Rails.application.routes.draw do
 
   devise_for :users
   root to: 'groups#index'
+  get 'dashboard', to: 'pages#dashboard'
   resources :users
   resources :groups do
-    resources :sessions, only: [:new, :edit, :create]
+    resources :bookings, only: [:new, :edit, :create]
     resources :reviews, only: [:show, :new, :create]
   end
 
-  resources :sessions, only: [:show, :destroy]
+  resources :bookings, only: [:show, :destroy]
   resources :reviews, only: [:destroy]
 
 

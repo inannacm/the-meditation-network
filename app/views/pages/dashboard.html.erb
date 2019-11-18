@@ -1,0 +1,17 @@
+<h1>My bookings</h1>
+
+<% @user.booking.each do |booking| %>
+<p>Group name: <%= booking.group.name %></p>
+<p>Booking date: <%= booking.date %></p>
+<% end %>
+
+<h1>My groups</h1>
+
+
+  <% if @user.groups.empty? %>
+  <p>You do not have any groups.</p>
+  <% else %>
+    <% @user.groups.each do |group| %>
+    <p>Group name: <%= group.name %></p>
+  <% end %>
+<% end %>

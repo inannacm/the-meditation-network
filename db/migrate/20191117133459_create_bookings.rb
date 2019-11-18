@@ -1,6 +1,6 @@
-class CreateSessions < ActiveRecord::Migration[5.2]
+class CreateBookings < ActiveRecord::Migration[5.2]
   def change
-    create_table :sessions do |t|
+    create_table :bookings do |t|
       t.references :group, foreign_key: true
       t.references :user, foreign_key: true
 
