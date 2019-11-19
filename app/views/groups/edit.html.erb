@@ -4,6 +4,7 @@
       <h1 class="mb-4">Create a group</h1>
       <%= simple_form_for [@group] do |f| %>
       <%= f.input :name, label: "Name of your group" %>
+      <%= f.input :content, label: "Describe your group", :input_html => {:rows => 5} %>
       <%= f.input :style, label: "Type of meditation", collection: ["Loving-kindness meditation", "Mindfulness meditation", "Buddhist meditation", "Zen meditation", "Transcendental meditation", "Other" ] %>
       <%= f.input :structure, label: "Type of group", collection: ["Group class", "Group meditation", "One-on-one", "Group discussion", "Social Group" ]%>
       <%= f.input :link, label: "Media link to your group" %>

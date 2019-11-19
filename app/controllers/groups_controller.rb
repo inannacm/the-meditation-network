@@ -1,6 +1,21 @@
 class GroupsController < ApplicationController
   def index
-    @groups = Group.all
+    # @groups = Group.all
+    # @groups = Group.filter(params.slice(:city, :structure, :style)).order(created_at: :desc)
+    @groups = Group.geocoded
+
+    @markers = @groups.map do |group|
+      {
+        lat: group.latitude,
+        lng: group.longitude,
+        infoWindow: render_to_string(partial: "/groups/info_window", locals: { group: group })
+        # image_url: helpers.asset_url('REPLACE_THIS_WITH_YOUR_IMAGE_IN_ASSETS')
+      }
+
+    end
+
+
+
   end
 
   def show
@@ -42,7 +57,8 @@ class GroupsController < ApplicationController
   end
 
   private
+
   def group_params
-    params.require(:group).permit(:name, :city, :style, :address, :structure, :link, :user_id)
+    params.require(:group).permit(:name, :content, :city, :style, :address, :structure, :link, :user_id)
   end
 end

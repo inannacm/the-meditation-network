@@ -16,7 +16,7 @@ class ReviewsController < ApplicationController
     if @review.save
       redirect_to group_path(@group)
     else
-      redirect_to new_group_review(@group)
+      render :new
     end
   end
 

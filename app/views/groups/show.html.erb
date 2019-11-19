@@ -1,6 +1,21 @@
 
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.2)), url(https://images.pexels.com/photos/1882004/pexels-photo-1882004.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=1000);">
+  <div class="container">
+    <h1 style= "font-size: 40px"><%= @group.name %> </h1>
+    <br>
+  </div>
+</div>
+
+
+
 <h1> <%= @group.name %> </h1>
 <p>Group host: <%= @group.user.first_name %></p>
+
+
+
+
+
+
 
 <% @group.reviews.each do |review| %>
 <%= review.user.first_name %>
