@@ -1,2 +1,20 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<%= render 'shared/banner' %>
+
+<div class="container" style="margin-top: 0px; margin-bottom: 20px">
+  <br>
+
+  <br>
+  <h2 style= "text-align: center;">Find meditation groups in your area
+  <br>
+
+<div class="cards">
+<% @groups.each do |group| %>
+
+  <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url(https://images.pexels.com/photos/1882004/pexels-photo-1882004.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=400)">
+      <p><%= link_to group.name, group_path(group) %></p>
+    </div>
+  <% end %>
+  </div>
+
+
+
