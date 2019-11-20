@@ -2,6 +2,8 @@
 <h1>Check out the groups!</h1>
 
 <div class="container">
+  <br>
+  <br>
 
   <%= simple_form_for :search, url: groups_path, method: :get do |f| %>
   <div class="search-form-control form-group form-inline" >
@@ -26,28 +28,38 @@
     </select>
 
     <button name="button" type="submit" class="btn btn-flat" id="search-button">
-     <i class="fas fa-compact-disc"></i> Search groups
+     <i class="fas fa-lotus"></i> Search groups
     </button>
   </div>
 <% end %>
 
 <div class="cards">
 <% @groups.each do |group| %>
+<% if group.photo.attached? %>
+<div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path group.photo.key, crop: :fill %>');">
+
+
+      <p><%= link_to group.name, group_path(group) %></p>
+    </div>
+    <% else %>
 
   <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.pexels.com/photos/1882004/pexels-photo-1882004.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=400)">
       <p><%= link_to group.name, group_path(group) %></p>
     </div>
+    <% end %>
   <% end %>
   </div>
 
-
+<br>
+<br>
 <div
   id="map"
   style="width: 100%;
-  height: 600px;"
+  height: 400px;"
   data-markers="<%= @markers.to_json %>"
   data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
  ></div>
+
 
 
 </div>

@@ -1,8 +1,11 @@
 class GroupsController < ApplicationController
+ # before_action :load_map, only: [:show, :index]
+
+
   def index
     # @groups = Group.all
-    # @groups = Group.filter(params.slice(:city, :structure, :style)).order(created_at: :desc)
-    @groups = Group.geocoded
+    @groups = Group.geocoded.filter(params.slice(:city, :structure, :style)).order(created_at: :desc)
+    # @groups = Group.geocoded
 
     @markers = @groups.map do |group|
       {
@@ -11,16 +14,28 @@ class GroupsController < ApplicationController
         infoWindow: render_to_string(partial: "/groups/info_window", locals: { group: group })
         # image_url: helpers.asset_url('REPLACE_THIS_WITH_YOUR_IMAGE_IN_ASSETS')
       }
-
     end
-
-
 
   end
 
   def show
-    @group = Group.find(params[:id])
+    # @group = Group.find(params[:id])
     # @review = Review.new
+    @group = Group.geocoded.find(params[:id])
+
+    # @markers = @groups.map do |group|
+    #   {
+    #     lat: group.latitude,
+    #     lng: group.longitude,
+    #     infoWindow: render_to_string(partial: "/groups/info_window", locals: { group: group })
+    #     # image_url: helpers.asset_url('REPLACE_THIS_WITH_YOUR_IMAGE_IN_ASSETS')
+    #   }
+      @markers = [{
+        lat: @group.latitude,
+        lng: @group.longitude,
+        infoWindow: render_to_string(partial: "/groups/info_window", locals: { group: @group })
+      }]
+
   end
 
   def new
@@ -59,6 +74,6 @@ class GroupsController < ApplicationController
   private
 
   def group_params
-    params.require(:group).permit(:name, :content, :city, :style, :address, :structure, :link, :user_id)
+    params.require(:group).permit(:name, :content, :city, :style, :address, :structure, :link, :user_id, :photo)
   end
 end
