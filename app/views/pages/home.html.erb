@@ -10,8 +10,13 @@
 <div class="cards">
 <% @groups.each do |group| %>
 
+<div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url('<%= cl_image_path group.photo.key, crop: :fill %>');">
+      <p><%= link_to group.name, group_path(group) %></p>
+      <% else %>
+
   <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url(https://images.pexels.com/photos/1882004/pexels-photo-1882004.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=400)">
       <p><%= link_to group.name, group_path(group) %></p>
+      <% end %>
     </div>
   <% end %>
   </div>

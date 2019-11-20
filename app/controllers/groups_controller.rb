@@ -4,7 +4,7 @@ class GroupsController < ApplicationController
 
   def index
     # @groups = Group.all
-    @groups = Group.geocoded.filter(params.slice(:city, :structure, :style)).order(created_at: :desc)
+    @groups = Group.geocoded.filter(params.slice(:address, :structure, :style)).order(created_at: :desc)
     # @groups = Group.geocoded
 
     @markers = @groups.map do |group|
